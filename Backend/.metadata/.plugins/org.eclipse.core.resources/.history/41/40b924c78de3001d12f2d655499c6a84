@@ -1,0 +1,7 @@
+package com.gestionClubs.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EventjoinRepository extends JpaRepository<T, ID> {
+
+}

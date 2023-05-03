@@ -1,0 +1,35 @@
+package com.gestionClubs.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="EventJoin")
+public class EventJoin {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+    private long id;
+	private String nomEvent;
+	private String nomUser;
+	public EventJoin(String nomEvent, String nomUser) {
+		super();
+		this.nomEvent = nomEvent;
+		this.nomUser = nomUser;
+	}
+	public String getNomEvent() {
+		return nomEvent;
+	}
+	public void setNomEvent(String nomEvent) {
+		this.nomEvent = nomEvent;
+	}
+	public String getNomUser() {
+		return nomUser;
+	}
+	public void setNomUser(String nomUser) {
+		this.nomUser = nomUser;
+	}
+	
+	}

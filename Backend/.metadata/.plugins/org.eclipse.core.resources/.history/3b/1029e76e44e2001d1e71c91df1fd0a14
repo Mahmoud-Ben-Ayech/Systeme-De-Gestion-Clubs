@@ -1,0 +1,69 @@
+package com.gestionClubs.serviceImple;
+
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.gestionClubs.dbutil.DBUtil;
+import com.gestionClubs.service.UserService;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+	Connection connection;
+	int flag=0;
+	public UserServiceImpl() throws SQLException {  
+		connection=DBUtil.getConnection();
+	}
+	@Override
+	public int loginValidation(String email, String password) {
+		try {
+			PreparedStatement statement=connection.prepareStatement("Select * from user where email = '"+email+"'");
+            ResultSet rs=statement.executeQuery();		
+            while(rs.next()) {
+            	if(rs.getString(4).equals(email)&& rs.getString(5).equals(password)) {
+            		flag=1;
+            	}
+            	else {
+            		System.out.println("Invalid password / email");
+            		flag=0;
+            	}
+            }
+            
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		return flag;
+	}
+	@Override 
+	
+	public int userCreation(String firstName,String lastName,String email, String password) {
+		try {
+			String sql="insert into user(firstName,lastName,email,password) "
+					+ "values ("+firstName+","+lastName+","+email+","+password+")";
+			Statement statement=(Statement) connection.prepareStatement(sql);
+			
+			int rowsAffected = ((java.sql.Statement) statement).executeUpdate(sql);
+			if (rowsAffected > 0) {
+			    System.out.println("Données ajoutées avec succès à la base de données !");
+			  } else {
+			    System.out.println("Aucune donnée n'a été ajoutée à la base de données.");
+			  }		
+            flag=1;
+		    } 
+		catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		return flag;
+		
+		
+	}
+	
+}

@@ -1,0 +1,16 @@
+package com.gestionClubs.serviceImple;
+
+import org.springframework.stereotype.Service;
+
+import com.gestionClubs.service.AdminService;
+
+@Service
+public class AdminServiceImpl implements AdminService{
+
+	@Override
+	public int loginValidation(String email, String password) {
+		
+		return 0;
+	}
+  
+}

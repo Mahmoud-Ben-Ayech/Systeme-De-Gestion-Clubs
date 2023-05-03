@@ -1,0 +1,18 @@
+package com.gestionClubs.repository;
+
+
+
+
+import java.util.ArrayList;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.gestionClubs.model.Event;
+
+import antlr.collections.List;
+
+public interface EventRepository extends JpaRepository<Event,Long> {
+
+	List findByTitleContaining(String eventName);
+
+}

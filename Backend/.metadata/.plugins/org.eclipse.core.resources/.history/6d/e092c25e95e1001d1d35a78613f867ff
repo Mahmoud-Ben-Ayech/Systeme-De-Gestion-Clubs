@@ -1,0 +1,42 @@
+package com.gestionClubs.serviceImple;
+
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.gestionClubs.dbutil.DBUtil;
+import com.gestionClubs.model.Event;
+import com.gestionClubs.service.EventService;
+
+@Service
+public class EventServiceImpl implements EventService {
+
+	Connection connection;
+	int flag=0;
+	public EventServiceImpl() throws SQLException {  
+		connection=DBUtil.getConnection();
+	} 
+	
+	public void addEvent( Event event) {
+		
+		try {
+			Statement statement=(Statement) connection.createStatement();
+			String sql="insert into event values("+event.getId()+","+event.getEventName()+","+event.getOrganizer()+","
+					+ ""+event.getPlace()+","+event.getAttendees()+","+event.getMaterialsNeeded()+","+event.getEventDate()+")";
+			int rowsAffected = ((java.sql.Statement) statement).executeUpdate(sql);
+			if (rowsAffected > 0) {
+			    System.out.println("Données ajoutées avec succès à la base de données !");
+			  } else {
+			    System.out.println("Aucune donnée n'a été ajoutée à la base de données.");
+			  }		
+		    } 
+		catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+	}
+	
+}

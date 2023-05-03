@@ -1,0 +1,29 @@
+package com.gestionClubs.serviceImple;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.gestionClubs.dbutil.DBUtil;
+import com.gestionClubs.model.Event;
+import com.gestionClubs.service.EventService;
+
+@Service
+public class EventServiceImpl implements EventService {
+
+	Connection connection;
+	int flag=0;
+	public EventServiceImpl() throws SQLException {  
+		connection=DBUtil.getConnection();
+	} 
+	
+	public Event addEvent(@RequestBody Event event) {
+		Event e=new Event();
+		
+		
+		return e;
+	}
+	
+}

@@ -1,0 +1,5 @@
+package com.gestionClubs.controller;
+
+public class EventController {
+
+}

@@ -1,0 +1,24 @@
+package com.gestionClubs.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gestionClubs.model.Event;
+import com.gestionClubs.service.EventService;
+
+@RestController
+public class EventController {
+
+	@Autowired
+	  private EventService eventService;
+	@CrossOrigin(origins="http://localhost:4200")
+	  @PostMapping("/addEvent")
+	  public void eventCreate(@RequestBody Event event) {
+	     eventService.addEvent(event);
+	  }
+	  
+	  
+}

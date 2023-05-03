@@ -1,0 +1,9 @@
+package com.gestionClubs.service;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserService {
+	public int loginValidation(String email,String password);
+	public int userCreation(String firstName,String lastName,String email, String password);
+}

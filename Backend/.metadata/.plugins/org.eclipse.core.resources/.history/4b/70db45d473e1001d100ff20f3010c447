@@ -1,0 +1,5 @@
+package com.gestionClubs.service;
+
+public interface EventService {
+
+}

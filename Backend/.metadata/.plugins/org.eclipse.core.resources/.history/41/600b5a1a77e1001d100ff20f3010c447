@@ -1,0 +1,11 @@
+package com.gestionClubs.service;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.gestionClubs.model.Event;
+
+@Repository
+public interface EventService {
+	public Event addEvent(@RequestBody Event event); 
+}
